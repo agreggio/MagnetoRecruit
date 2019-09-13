@@ -1,3 +1,4 @@
+
 package controler;
 
 
@@ -9,7 +10,7 @@ package controler;
  */
 public class Mutant {
 
-   static public boolean isMutant(String[] dna) {
+    static public boolean isMutant(String[] dna) {
        
        
 

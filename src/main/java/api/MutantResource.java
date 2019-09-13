@@ -1,9 +1,6 @@
 package api;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,37 +8,35 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import model.Dna;
+import com.google.gson.*;
+import controler.Mutant;
+
 
 @Path("/isMutant")
 public class MutantResource {
 
- 
- 
- @GET
- @Produces({MediaType.APPLICATION_JSON})
- @Consumes(MediaType.TEXT_PLAIN)
- public String get() {
-   
- return "Solo se reciben metodo post";
- }
- 
- 
-@POST	
-@Consumes(MediaType.APPLICATION_JSON)
-public Response crunchifyREST(InputStream incomingData) {
-		StringBuilder crunchifyBuilder = new StringBuilder();
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
-			String line = null;
-			while ((line = in.readLine()) != null) {
-				crunchifyBuilder.append(line);
-			}
-		} catch (Exception e) {
-			System.out.println("Error Parsing: - ");
-		}
-		System.out.println("Data Received: " + crunchifyBuilder.toString());
- 
-		// return HTTP response 200 in case of success
-		return Response.status(200).entity(crunchifyBuilder.toString()).build();
-}
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.TEXT_PLAIN)
+    public String get() {
+
+        return "Solo se reciben metodo post";
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response isMutant(String dnaStr) {
+        Gson gson = new Gson();
+        Dna dna = gson.fromJson(dnaStr, Dna.class);
+        String[] Auxdna = new String[dna.getDna().length];
+        System.arraycopy(dna.getDna(), 0, Auxdna, 0, dna.getDna().length);
+
+        if (Mutant.isMutant(Auxdna)) {
+            return Response.status(Response.Status.OK).build();
+        } else {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+    }
 }
