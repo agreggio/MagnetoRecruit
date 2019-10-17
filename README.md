@@ -59,7 +59,7 @@ Además se valida Dna recibido, para que las cadenas de ADN sean mayores o igual
 ### Nivel 2:
 
 #### Url Api Google Cloud Apache Tomcat/8.5.14 (Debian)
-http://34.70.103.137/MagnetoRecruit/mutant/isMutant
+http://35.223.43.127/MagnetoRecruit/mutant/isMutant
 
 ##### Metodo Get
 
