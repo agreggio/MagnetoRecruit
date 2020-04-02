@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
   // 011-63296888
   // seginf-idn@bancogalicias.com.ar
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
 
     @ApiOperation(value = "Create new user")
     @RequestMapping(method = RequestMethod.POST)
@@ -35,11 +35,11 @@ public class UserController {
         n.setUsername(user.getUsername());
         n.setPassword(user.getPassword());
 
-        if (!userRepository.findByUsername(user.getUsername()).isPresent()) {
+//        if (!userRepository.findByUsername(user.getUsername()).isPresent()) {
 //            userRepository.save(n);
-        } else {
-            return new ResponseEntity<>("User Duplicate ", HttpStatus.BAD_REQUEST);
-        }
+//        } else {
+//            return new ResponseEntity<>("User Duplicate ", HttpStatus.BAD_REQUEST);
+//        }
 
         return new ResponseEntity<>("User Created", HttpStatus.OK);
     }
