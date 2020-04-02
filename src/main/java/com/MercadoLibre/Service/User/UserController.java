@@ -36,7 +36,7 @@ public class UserController {
         n.setPassword(user.getPassword());
 
         if (!userRepository.findByUsername(user.getUsername()).isPresent()) {
-            userRepository.save(n);
+//            userRepository.save(n);
         } else {
             return new ResponseEntity<>("User Duplicate ", HttpStatus.BAD_REQUEST);
         }
@@ -44,10 +44,10 @@ public class UserController {
         return new ResponseEntity<>("User Created", HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Iterable<User> getAllUsers() {
-        // This returns a JSON or XML with the users
-        return userRepository.findAll();
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    public Iterable<User> getAllUsers() {
+//        // This returns a JSON or XML with the users
+//        return userRepository.findAll();
+//    }
 
 }
