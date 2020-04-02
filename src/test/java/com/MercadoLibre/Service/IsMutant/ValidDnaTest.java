@@ -5,7 +5,7 @@
  */
 package com.MercadoLibre.Service.IsMutant;
 
-import java.util.Arrays;
+import com.MercadoLibre.Service.Utils.ValidDna;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
