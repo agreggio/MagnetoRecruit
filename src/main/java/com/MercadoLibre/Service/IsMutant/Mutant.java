@@ -1,10 +1,31 @@
-package controller;
+package com.MercadoLibre.Service.IsMutant;
+
+import java.util.Arrays;
 
 /**
  *
  * @author Alejandro Greggio
  */
-public class Mutant {
+public class Mutant extends Thread{
+    
+    String[] dna = {};
+
+    Mutant(String[] dna) {
+        this.dna = dna;
+    }
+    
+    
+    @Override
+    public void run(){
+        
+        System.out.println(Arrays.toString(dna));
+        System.out.println(isMutant(dna));
+        
+        
+    }
+    
+    
+    
     //Desde una posicion determinado por i,j toma 4 caracteres consecutivos en setindo horizontal, vertical, diagonal y diagonal invertido para verificar si son iguales
     static public boolean isMutant(String[] dna) {
         //Contabiliza total de combinaciones iguales
