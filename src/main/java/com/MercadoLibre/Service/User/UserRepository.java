@@ -7,14 +7,16 @@ package com.MercadoLibre.Service.User;
 
 import java.util.Optional;
 import javax.persistence.Id;
-//import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Alejandro Greggio
  */
-public interface UserRepository{ //extends CrudRepository<User, Id> {
+public interface UserRepository extends CrudRepository<User, Id> {
     
 Optional<User>findByUsername(String username);
+
+Optional<User> findById(int id);
 
 }
